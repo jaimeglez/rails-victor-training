@@ -1,7 +1,15 @@
-%h1 Hi everyone, I'm on articles index
--if false
-  =@vic
-%div.thisclass#adsadj
-  %span algo
-  %div
-    mas cosas adentro
+%h1 Listing articles
+= link_to 'New article', new_article_path
+%table
+  %thead
+    %tr
+      %th Title
+      %th Text
+      %th{:colspan => "2"}
+  %tbody
+    - @articles.each do |article|
+      %tr
+        %td= article.title
+        %td= article.text
+        %td= link_to 'Show', article_path(article)
+        %td= link_to 'Edit', edit_article_path(article)
