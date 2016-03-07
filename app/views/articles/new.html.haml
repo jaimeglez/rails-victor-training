@@ -1,12 +1,5 @@
 = form_for :article, url: articles_path do |f|
-  - if @article.errors.any?
-    #error_explanation
-      %h2
-        =pluralize(@article.errors.count, "error")
-        prohibited this article from being saved:
-      %ul
-      - @article.errors.full_messages.each do |msg|
-        %li= msg
+  =render partial: 'errors'
   %p
     = f.label :title
     %br
