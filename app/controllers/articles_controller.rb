@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @vic = 'Victor Hugo'
+    @articles = Article.all
   end
 
   def new
