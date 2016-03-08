@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/index'
-
-  get 'users/index'
-
-  get 'users/index'
-
-  get 'users/index'
-
-  get 'users/index'
 
   get 'users/index'
 
@@ -20,6 +11,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :articles
+  resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
