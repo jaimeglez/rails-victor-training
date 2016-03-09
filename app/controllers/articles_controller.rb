@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @user = User.find(params[:user_id])
+    @articles = Article.where(user_id: @user.id)
   end
 
   def new
@@ -13,7 +14,7 @@ class ArticlesController < ApplicationController
     @article = @user.articles.create(article_params)
 
     if @article.save
-      redirect_to @article
+      redirect_to user_article_url(@user)
     else
       render 'new'
     end
