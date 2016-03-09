@@ -1,0 +1,21 @@
+= form_for :user, url: users_path do |f|
+  =render partial: 'errors'
+  %p
+    = f.label :username
+    %br
+    = f.text_field :username
+
+  %p
+    = f.label :email
+    %br
+    = f.text_field :email
+    = f.text_field :email_confirmation
+    
+  %p
+    = f.label :password
+    %br
+    = f.password_field :password
+
+  %p
+    = f.submit
+= link_to 'Back', users_path

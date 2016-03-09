@@ -1,0 +1,23 @@
+%h1 Editing User
+
+= form_for :user, url: user_path(@user), method: :patch do |f|
+  =render partial: 'errors'
+  %p
+    = f.label :username
+    %br
+    = f.text_field :username
+
+  %p
+    = f.label :email
+    %br
+    = f.text_field :email
+    = f.text_field :email_confirmation
+    
+  %p
+    = f.label :password
+    %br
+    = f.text_field :password
+
+  %p
+    = f.submit
+= link_to 'Back', users_path
