@@ -23,26 +23,25 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
- def edit
-   @article= Article.find(params[:id])
- end
+  def edit
+    @article= Article.find(params[:id])
+  end
 
- def update
-   @article= Article.find(params[:id])
-   if @article.update(article_params)
-     redirect_to user_articles_path(@user)
-   else
-     render 'edit'
-   end
-end
+  def update
+    @article= Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to user_articles_path(@user)
+    else
+      render 'edit'
+    end
+  end
 
   private
-  def article_params
-    params.require(:article).permit(:title, :text)
-  end
+    def article_params
+      params.require(:article).permit(:title, :text)
+    end
 
-  def find_user
-   @user= User.find(params[:user_id])
-  end
-
+    def find_user
+      @user= User.find(params[:user_id])
+    end
 end
