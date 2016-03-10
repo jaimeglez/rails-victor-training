@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
+  before_filter :find_user, except: [:new]
+
   def index
-    @user = User.find(params[:user_id])
     @articles = Article.where(user_id: @user.id)
   end
 
@@ -9,7 +10,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
     @article = @user.articles.create(article_params)
 
     if @article.save
@@ -20,20 +20,16 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @user=User.find(params[:user_id])
     @article = Article.find(params[:id])
   end
 
  def edit
-   @user=User.find(params[:user_id])
-   @article = Article.find(params[:id])
+   @article= Article.find(params[:id])
  end
 
  def update
-   @user = User.find(params[:user_id])
-   @article=Article.find(params[:id])
-
-   if @user.articles.update( @article, article_params)
+   @article= Article.find(params[:id])
+   if @article.update(article_params)
      redirect_to user_articles_path(@user)
    else
      render 'edit'
@@ -44,4 +40,9 @@ end
   def article_params
     params.require(:article).permit(:title, :text)
   end
+
+  def find_user
+   @user= User.find(params[:user_id])
+  end
+
 end
