@@ -5,13 +5,13 @@
     %tr
       %th User name
       %th Email
-      %th Password
-      %th{:colspan => "2"}
+      %th{:colspan => "4"}
   %tbody
     - @users.each do |user|
       %tr
         %td= user.username
         %td= user.email
-        %td= user.password
         %td= link_to 'Show', user_path(user)
         %td= link_to 'Edit', edit_user_path(user)
+        %td= link_to 'Create article', new_user_article_path(user)
+        %td= link_to 'Show articles',user_articles_path(user)

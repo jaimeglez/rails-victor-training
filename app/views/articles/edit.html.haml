@@ -1,7 +1,7 @@
 %h1 Editing article
 
-= form_for :article, url: article_path(@article), method: :patch do |f|
-  =render partial: 'errors'
+= form_for :article, url: user_article_path(@user, @article), method: :patch do |f|
+  =render partial: 'shared/errors'
   %p
     = f.label :title
     %br
@@ -12,4 +12,4 @@
     = f.text_area :text
   %p
     = f.submit
-= link_to 'Back', articles_path
+= link_to 'Back', user_articles_path(@user)

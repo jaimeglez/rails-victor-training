@@ -1,6 +1,9 @@
+%label= "By User: #{@user[:username]}"
+%br
+%br
 %label= "Title: #{@article[:title]}"
 %br
 %label= "Description: #{@article[:text]}"
 %br
-= link_to 'Back', articles_path  
-= link_to 'Edit', edit_article_path(@article)
+= link_to 'Back', user_articles_path(@user)  
+= link_to 'Edit', edit_user_article_path(@user, @article)

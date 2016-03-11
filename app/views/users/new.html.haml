@@ -1,5 +1,5 @@
 = form_for :user, url: users_path do |f|
-  =render partial: 'errors'
+  =render partial: 'shared/errors'
   %p
     = f.label :username
     %br
@@ -10,7 +10,7 @@
     %br
     = f.text_field :email
     = f.text_field :email_confirmation
-    
+
   %p
     = f.label :password
     %br

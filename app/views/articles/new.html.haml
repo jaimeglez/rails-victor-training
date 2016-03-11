@@ -1,5 +1,5 @@
-= form_for :article, url: articles_path do |f|
-  =render partial: 'errors'
+= form_for :article, url: user_articles_path do |f|
+  =render partial: 'shared/errors'
   %p
     = f.label :title
     %br
@@ -12,4 +12,4 @@
 
   %p
     = f.submit
-= link_to 'Back', articles_path
+= link_to 'Back', user_articles_path
