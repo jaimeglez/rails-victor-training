@@ -1,7 +1,7 @@
 %h1 Editing User
 
 = form_for :user, url: user_path(@user), method: :patch do |f|
-  =render partial: 'errors'
+  =render partial: 'shared/errors'
   %p
     = f.label :username
     %br
@@ -12,7 +12,7 @@
     %br
     = f.text_field :email
     = f.text_field :email_confirmation
-    
+
   %p
     = f.label :password
     %br
