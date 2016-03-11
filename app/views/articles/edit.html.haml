@@ -1,7 +1,7 @@
 %h1 Editing article
 
 = form_for :article, url: user_article_path(@user, @article), method: :patch do |f|
-  =render partial: 'shared/errors'
+  =render partial: 'shared/errors', locals: {model_obj: @article}
   %p
     = f.label :title
     %br

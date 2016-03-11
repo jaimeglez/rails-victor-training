@@ -1,5 +1,5 @@
 = form_for :article, url: user_articles_path do |f|
-  =render partial: 'shared/errors'
+  =render partial: 'shared/errors', locals: {model_obj: @article}
   %p
     = f.label :title
     %br
