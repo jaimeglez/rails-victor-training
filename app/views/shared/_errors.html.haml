@@ -1,8 +1,7 @@
 - if model_obj.errors.any?
-  #error_explanation
-    %h2
+  #error_explanation.alert.alert-danger{:role => "alert"}
+    %label
       =pluralize(model_obj.errors.count, "error")
-      prohibited this article from being saved:
     %ul
     - model_obj.errors.full_messages.each do |msg|
       %li= msg

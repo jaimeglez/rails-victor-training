@@ -1,8 +1,13 @@
-%label= "User Name: #{@user[:username]}"
-%br
-%label= "Email: #{@user[:email]}"
-%br
-%label= "Password: #{@user[:password]}"
-%br
-= link_to 'Back', users_path  
-= link_to 'Edit', edit_user_path(@user)
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title About User
+  .panel-body
+    %h4= "User Name: #{@user[:username]}"
+    %br
+    %h4= "Email: #{@user[:email]}"
+    %br
+    %h4= "Password: #{@user[:password]}"
+%a.btn.btn-primary{:href => "#{users_path}"}
+  %i.fa.fa-backward= ' Back'
+%a.btn.btn-warning{:href => "#{edit_user_path(@user)}"}
+  %i.fa.fa-pencil-square-o= ' Edit'  	

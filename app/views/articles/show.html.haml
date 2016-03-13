@@ -1,9 +1,11 @@
-%label= "By User: #{@user[:username]}"
-%br
-%br
-%label= "Title: #{@article[:title]}"
-%br
-%label= "Description: #{@article[:text]}"
-%br
-= link_to 'Back', user_articles_path(@user)  
-= link_to 'Edit', edit_user_article_path(@user, @article)
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title= "Article By: #{@user[:username]}"
+  .panel-body
+    %h4= "Title: #{@article[:title]}"
+    %br
+    %h4= "Description: #{@article[:text]}"
+%a.btn.btn-primary{:href => "#{user_articles_path(@user)}"}
+  %i.fa.fa-backward= ' Back'
+%a.btn.btn-warning{:href => "#{edit_user_article_path(@user, @article)}"}
+  %i.fa.fa-pencil-square-o= ' Edit' 

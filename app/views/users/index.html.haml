@@ -1,6 +1,8 @@
 %h1 Listing user
-= link_to 'New user', new_user_path
-%table
+%br 
+%a.btn.btn-success{:href => "#{new_user_path}"}
+  %i.fa.fa-plus.fa-lg= ' Create user'
+%table.table.table-striped
   %thead
     %tr
       %th User name
@@ -11,7 +13,15 @@
       %tr
         %td= user.username
         %td= user.email
-        %td= link_to 'Show', user_path(user)
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Create article', new_user_article_path(user)
-        %td= link_to 'Show articles',user_articles_path(user)
+        %td
+          %a.btn.btn-info{:href => "#{user_path(user)}"}
+            %i.fa.fa-eye= ' Show' 
+        %td
+          %a.btn.btn-warning{:href => "#{edit_user_path(user)}"}
+            %i.fa.fa-pencil-square-o= ' Edit'
+        %td
+          %a.btn.btn-success{:href => "#{new_user_article_path(user)}"}
+            %i.fa.fa-plus= ' Create article'
+        %td
+          %a.btn.btn-info{:href => "#{user_articles_path(user)}"}
+            %i.fa.fa-eye= ' Show articles'

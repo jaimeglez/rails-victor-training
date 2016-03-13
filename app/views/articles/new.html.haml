@@ -1,15 +1,9 @@
-= form_for :article, url: user_articles_path do |f|
-  =render partial: 'shared/errors', locals: {model_obj: @article}
-  %p
-    = f.label :title
-    %br
+%h2.text-center New articles
+=render partial: 'shared/errors', locals: {model_obj: @article}
+= bootstrap_form_for :article, url: user_articles_path do |f|
     = f.text_field :title
-
-  %p
-    = f.label :text
-    %br
     = f.text_area :text
-
-  %p
-    = f.submit
-= link_to 'Back', user_articles_path
+    = f.submit "Save article", class: "btn btn-success"
+%br
+%a.btn.btn-primary{:href => "#{user_articles_path}"}
+    %i.fa.fa-backward.fa-lg= ' Back'

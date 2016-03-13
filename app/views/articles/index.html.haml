@@ -1,6 +1,8 @@
 %h1 Listing articles By #{@user[:username]}
-= link_to 'New article', new_user_article_path(@user)
-%table
+%br
+%a.btn.btn-success{:href => "#{new_user_article_path(@user)}"}
+  %i.fa.fa-plus.fa-lg= ' New Article'
+%table.table.table-striped
   %thead
     %tr
       %th Title
@@ -11,6 +13,11 @@
       %tr
         %td= article.title
         %td= article.text
-        %td= link_to 'Show', user_article_path(@user, article)
-        %td= link_to 'Edit', edit_user_article_path(@user, article)
-= link_to 'Back', users_path
+        %td
+          %a.btn.btn-info{:href => "#{user_article_path(@user, article)}"}
+            %i.fa.fa-eye= ' Show'
+        %td
+          %a.btn.btn-warning{:href => "#{edit_user_article_path(@user, article)}"}
+            %i.fa.fa-pencil-square-o= ' Edit'
+%a.btn.btn-primary{:href => "#{users_path}"}
+  %i.fa.fa-backward.fa-lg= ' Back'
