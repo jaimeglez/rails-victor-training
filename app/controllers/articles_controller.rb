@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_filter :find_user, except: [:new]
 
   def index
+    binding.pry
     @articles = Article.where(user_id: @user.id)
   end
 
