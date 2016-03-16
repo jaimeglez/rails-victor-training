@@ -40,28 +40,27 @@ describe User do
     @user.email_confirmation = ''
     expect(@user.valid?).to be_false
   end
-  # ===========================================================
 
-  it 'match email with email_confirmation' do
-    @user = User.new
-    @user.email_confirmation = 'a@a.com'
-    @user.email = 'a@a.com'
-    expect(@user.email).to match(@user.email_confirmation)
+  it 'invalid match email with email_confirmation' do
+    @user.email_confirmation = 'a1@a.com'
+    @user.valid?
+    expect(@user.errors.messages[:email_confirmation]).to include("doesn't match Email")
+
   end
 
-  it 'is invalid when password has letters' do
-    @user.password = '11111kk11n1'
-    expect(@user.save).to be_false
+  it 'is valid when password has letters' do
+    @user.valid?
+    expect(@user.errors.messages[:password]).to be_nil
+    expect(@user.save).to be_true
   end
 
-  it 'is valid username length >= 8' do
-    @user = User.new
-    @user.password = '1232323445'
-    expect(@user.password.length).to be >= 8
+  it 'is invalid password length < 8' do
+    @user.password = '1111111'
+    @user.valid?
+    expect(@user.errors.messages[:password]).to include('is too short (minimum is 8 characters)')
   end
 
-  it 'increase number of records by one in user' do
-    @user = User.new(username: 'ssssssss', email: 'a@a.com', email_confirmation: 'a@a.com', password: '123456789')
+  it 'is valid increase number of records by one in user' do
     expect{@user.save}.to change{User.count}.by(1)
   end
 
