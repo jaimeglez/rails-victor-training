@@ -1,23 +1,11 @@
-%h1 Editing User
-
-= form_for :user, url: user_path(@user), method: :patch do |f|
-  =render partial: 'shared/errors'
-  %p
-    = f.label :username
-    %br
-    = f.text_field :username
-
-  %p
-    = f.label :email
-    %br
-    = f.text_field :email
-    = f.text_field :email_confirmation
-
-  %p
-    = f.label :password
-    %br
-    = f.text_field :password
-
-  %p
-    = f.submit
-= link_to 'Back', users_path
+%h2.text-center Editing User
+=render partial: 'shared/errors', locals: {model_obj: @user}
+= bootstrap_form_for :user, url: user_path(@user), method: :patch do |f|
+  = f.text_field :username
+  = f.email_field :email
+  = f.email_field :email_confirmation
+  = f.password_field :password
+  = f.submit "Save user", class: "btn btn-success"
+%br
+%a.btn.btn-primary{:href => "#{users_path}"}
+  %i.fa.fa-backward.fa-lg= ' Back'
