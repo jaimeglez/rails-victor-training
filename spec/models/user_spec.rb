@@ -3,7 +3,7 @@ require 'pry'
 
 describe User do
 
-  let(:user){User.new(username: 'VictorHugo', email: 'hugo@gamil.com', email_confirmation: 'hugo@gamil.com', password: '12345678')}
+  let(:user){ build :user }
 
   it 'is invalid when there is not username' do
     user = User.new
