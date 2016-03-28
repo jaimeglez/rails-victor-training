@@ -25,3 +25,8 @@
         %td
           %a.btn.btn-info{:href => "#{user_articles_path(user)}"}
             %i.fa.fa-eye= ' Show articles'
+        %td
+          = link_to 'Destroy User', [user],
+               method: :delete,
+               data: { confirm: 'Are you sure delete this user?' },
+               class: "btn btn-danger"

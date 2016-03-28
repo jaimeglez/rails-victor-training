@@ -19,5 +19,10 @@
         %td
           %a.btn.btn-warning{:href => "#{edit_user_article_path(@user, article)}"}
             %i.fa.fa-pencil-square-o= ' Edit'
+        %td
+          = link_to 'Destroy Article', [@user, article],
+               method: :delete,
+               data: { confirm: 'Are you sure delete this article?' },
+               class: "btn btn-danger"
 %a.btn.btn-primary{:href => "#{users_path}"}
   %i.fa.fa-backward.fa-lg= ' Back'
