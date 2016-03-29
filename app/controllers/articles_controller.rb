@@ -2,7 +2,6 @@ class ArticlesController < ApplicationController
   before_filter :find_user, except: [:new]
 
   def index
-    binding.pry
     @articles = Article.where(user_id: @user.id)
   end
 
@@ -35,6 +34,12 @@ class ArticlesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to user_articles_path(@user)
   end
 
   private

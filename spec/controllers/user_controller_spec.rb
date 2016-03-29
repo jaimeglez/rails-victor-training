@@ -53,16 +53,15 @@ describe UsersController do
     # end
   end
 
-  # describe 'DELETE destroy' do
-  #   it "deletes user" do
-  #     delete :destroy, id: user
-  #     user.find_by(id: user).should eq(nil)
-  #   end
-  #   it "redirects to users#index" do
-  #     delete :destroy, id: user
-  #     response.should redirect_to users_url
-  #   end
-  # end
+   describe 'DELETE destroy' do
+     it "deletes user" do
+       expect{ delete :destroy, id: user }.to change(User, :count).by(0)
+     end
+     it "redirects to users#index" do
+       delete :destroy, id: user
+       expect(response).to redirect_to(assigns(:user))
+     end
+   end
 
 end
 
