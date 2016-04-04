@@ -1,6 +1,6 @@
 %h1 Listing articles By #{@user[:username]}
 %br
-%a.btn.btn-success{:href => "#{new_user_article_path(@user)}"}
+%a.btn.btn-success{:href => "#{new_admin_user_article_path(@user)}"}
   %i.fa.fa-plus.fa-lg= ' New Article'
 %table.table.table-striped
   %thead
@@ -14,15 +14,15 @@
         %td= article.title
         %td= article.text
         %td
-          %a.btn.btn-info{:href => "#{user_article_path(@user, article)}"}
+          %a.btn.btn-info{:href => "#{admin_user_article_path(@user, article)}"}
             %i.fa.fa-eye= ' Show'
         %td
-          %a.btn.btn-warning{:href => "#{edit_user_article_path(@user, article)}"}
+          %a.btn.btn-warning{:href => "#{edit_admin_user_article_path(@user, article)}"}
             %i.fa.fa-pencil-square-o= ' Edit'
         %td
-          = link_to 'Destroy Article', [@user, article],
+          = link_to 'Destroy Article', admin_user_article_path(@user, article),
                method: :delete,
                data: { confirm: 'Are you sure delete this article?' },
                class: "btn btn-danger"
-%a.btn.btn-primary{:href => "#{users_path}"}
+%a.btn.btn-primary{:href => "#{admin_users_path}"}
   %i.fa.fa-backward.fa-lg= ' Back'

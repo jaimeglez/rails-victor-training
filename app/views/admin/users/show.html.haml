@@ -7,7 +7,7 @@
     %h4= "Email: #{@user[:email]}"
     %br
     %h4= "Password: #{@user[:password]}"
-%a.btn.btn-primary{:href => "#{users_path}"}
+%a.btn.btn-primary{:href => "#{admin_users_path}"}
   %i.fa.fa-backward= ' Back'
-%a.btn.btn-warning{:href => "#{edit_user_path(@user)}"}
+%a.btn.btn-warning{:href => "#{edit_admin_user_path(@user)}"}
   %i.fa.fa-pencil-square-o= ' Edit'  	

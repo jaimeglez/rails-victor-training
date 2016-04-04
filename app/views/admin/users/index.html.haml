@@ -1,6 +1,6 @@
 %h1 Listing user
 %br 
-%a.btn.btn-success{:href => "#{new_user_path}"}
+%a.btn.btn-success{:href => "#{new_admin_user_path}"}
   %i.fa.fa-plus.fa-lg= ' Create user'
 %table.table.table-striped
   %thead
@@ -14,19 +14,19 @@
         %td= user.username
         %td= user.email
         %td
-          %a.btn.btn-info{:href => "#{user_path(user)}"}
+          %a.btn.btn-info{:href => "#{admin_user_path(user)}"}
             %i.fa.fa-eye= ' Show' 
         %td
-          %a.btn.btn-warning{:href => "#{edit_user_path(user)}"}
+          %a.btn.btn-warning{:href => "#{edit_admin_user_path(user)}"}
             %i.fa.fa-pencil-square-o= ' Edit'
         %td
-          %a.btn.btn-success{:href => "#{new_user_article_path(user)}"}
+          %a.btn.btn-success{:href => "#{new_admin_user_article_path(user)}"}
             %i.fa.fa-plus= ' Create article'
         %td
-          %a.btn.btn-info{:href => "#{user_articles_path(user)}"}
+          %a.btn.btn-info{:href => "#{admin_user_articles_path(user)}"}
             %i.fa.fa-eye= ' Show articles'
         %td
-          = link_to 'Destroy User', [user],
+          = link_to 'Destroy User', admin_user_path(user),
                method: :delete,
                data: { confirm: 'Are you sure delete this user?' },
                class: "btn btn-danger"

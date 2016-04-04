@@ -8,7 +8,15 @@
         %span.icon-bar
         %span.icon-bar
     .collapse.navbar-collapse.navbar-menubuilder
-      %ul.nav.navbar-nav.navbar-left
-        %li
-          %a{:href => "/users"} Users
+      - if admin_signed_in?
+        %ul.nav.navbar-nav.navbar-left
+          %li
+            %a{:href => "#{admin_users_path}"} Users
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            %a{"data-method" => "delete", :href => "#{destroy_admin_session_path}"} Sign out
+      - else
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            %a{:href => "#{new_admin_session_path}"} Sign in
         
