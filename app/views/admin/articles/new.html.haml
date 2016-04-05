@@ -1,9 +1,9 @@
-%h2.text-center Editing article
+%h2.text-center New articles
 =render partial: 'shared/errors', locals: {model_obj: @article}
-= bootstrap_form_for :article, url: user_article_path(@user, @article), method: :patch do |f|
+= bootstrap_form_for :article, url: admin_user_articles_path do |f|
     = f.text_field :title
     = f.text_area :text
     = f.submit "Save article", class: "btn btn-success"
 %br
-%a.btn.btn-primary{:href => "#{user_articles_path(@user)}"}
+%a.btn.btn-primary{:href => "#{admin_user_articles_path}"}
     %i.fa.fa-backward.fa-lg= ' Back'

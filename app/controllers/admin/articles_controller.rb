@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class Admin::ArticlesController < Admin::AdminController
   before_filter :find_user, except: [:new]
 
   def index
@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
     @article = @user.articles.create(article_params)
 
     if @article.save
-      redirect_to user_articles_path(@user)
+      redirect_to admin_user_articles_path(@user)
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
   def update
     @article= Article.find(params[:id])
     if @article.update(article_params)
-      redirect_to user_articles_path(@user)
+      redirect_to admin_user_articles_path(@user)
     else
       render 'edit'
     end
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to user_articles_path(@user)
+    redirect_to admin_user_articles_path(@user)
   end
 
   private

@@ -12,9 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= require devise_bootstrap_views
  *= require rails_bootstrap_forms
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "devise_bootstrap_views";
 @import "font-awesome-sprockets";
 @import "font-awesome";
