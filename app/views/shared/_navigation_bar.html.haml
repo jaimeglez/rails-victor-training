@@ -16,6 +16,9 @@
           %li
             %a{"data-method" => "delete", :href => "#{destroy_admin_session_path}"} Sign out
       - else
+        %ul.nav.navbar-nav.navbar-left
+          %li
+            %a{:href => "#{articles_path}"} Articles
         %ul.nav.navbar-nav.navbar-right
           %li
             %a{:href => "#{new_admin_session_path}"} Sign in
