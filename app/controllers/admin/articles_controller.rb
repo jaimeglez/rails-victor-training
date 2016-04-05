@@ -44,7 +44,7 @@ class Admin::ArticlesController < Admin::AdminController
 
   private
     def article_params
-      params.require(:article).permit(:title, :text)
+      params.require(:article).permit(:title, :text, :img)
     end
 
     def find_user

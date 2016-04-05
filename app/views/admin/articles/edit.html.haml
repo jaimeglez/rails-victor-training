@@ -3,6 +3,7 @@
 = bootstrap_form_for :article, url: admin_user_article_path(@user, @article), method: :patch do |f|
     = f.text_field :title
     = f.text_area :text
+    = f.file_field :img
     = f.submit "Save article", class: "btn btn-success"
 %br
 %a.btn.btn-primary{:href => "#{admin_user_articles_path(@user)}"}

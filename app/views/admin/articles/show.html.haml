@@ -5,6 +5,8 @@
     %h4= "Title: #{@article[:title]}"
     %br
     %h4= "Description: #{@article[:text]}"
+    %br
+    = image_tag @article.img.url
 %a.btn.btn-primary{:href => "#{admin_user_articles_path(@user)}"}
   %i.fa.fa-backward= ' Back'
 %a.btn.btn-warning{:href => "#{edit_admin_user_article_path(@user, @article)}"}
