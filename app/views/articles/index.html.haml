@@ -16,5 +16,7 @@
         %td
           %a.btn.btn-info{:href => "#{article_path(article)}"}
             %i.fa.fa-eye= ' Show'
+= paginate @articles, theme:'twitter-bootstrap-3'
+%br
 %a.btn.btn-primary{:href => "#{welcome_index_path}"}
   %i.fa.fa-backward.fa-lg= ' Back'

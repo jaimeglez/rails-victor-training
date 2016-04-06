@@ -2,7 +2,7 @@ class Admin::ArticlesController < Admin::AdminController
   before_filter :find_user, except: [:new]
 
   def index
-    @articles = Article.where(user_id: @user.id)
+    @articles = Article.where(user_id: @user.id).page(params[:page]).per(2)
   end
 
   def new

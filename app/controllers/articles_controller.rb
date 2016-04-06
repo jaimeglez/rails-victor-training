@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   #before_filter :find_user, except: [:new]
 
   def index
-    @articles = Article.all
+    @articles = Article.page(params[:page]).per(2)
   end
 
 

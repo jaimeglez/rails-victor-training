@@ -30,3 +30,5 @@
                method: :delete,
                data: { confirm: 'Are you sure delete this user?' },
                class: "btn btn-danger"
+= paginate @users, theme:'twitter-bootstrap-3'
+%br
