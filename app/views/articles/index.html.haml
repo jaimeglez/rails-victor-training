@@ -6,15 +6,12 @@
       %th Title
       %th Text
       %th Author
-      %th{:colspan => "2"}
+      %th{colspan:"2"}
   %tbody
     - @articles.each do |article|
       %tr
         %td= article.title
         %td= article.text
         %td= article.user.username
-        %td
-          %a.btn.btn-info{:href => "#{article_path(article)}"}
-            %i.fa.fa-eye= ' Show'
-%a.btn.btn-primary{:href => "#{welcome_index_path}"}
-  %i.fa.fa-backward.fa-lg= ' Back'
+        %td= link_to content_tag(:i,' Show', class: 'fa fa-eye'), article_path(article), class: 'btn btn-info'
+= link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), root_path, class: 'btn btn-primary'

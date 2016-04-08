@@ -1,0 +1,6 @@
+= bootstrap_form_for [@user, @article], url: url do |f|
+    = f.text_field :title
+    = f.text_area :text
+    = f.file_field :img
+    = f.submit "Save article", class: "btn btn-success"
+%br

@@ -7,5 +7,4 @@
     %h4= "Description: #{@article.text}"
     %br
     = image_tag @article.img.url
-%a.btn.btn-primary{:href => "#{articles_path()}"}
-  %i.fa.fa-backward= ' Back'
+= link_to content_tag(:i,'Back', class: 'fa fa-backward'), articles_path, class: 'btn btn-primary'
