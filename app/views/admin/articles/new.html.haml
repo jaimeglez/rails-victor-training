@@ -1,17 +1,7 @@
 =javascript_include_tag 'previewImg'
 %h2.text-center New articles
-=render partial: 'shared/errors', locals: {model_obj: @article}
-= bootstrap_form_for :article, url: admin_user_articles_path do |f|
-    = f.text_field :title
-    = f.text_area :text
-    = f.file_field :img, id: "img-upload"
-    = image_tag '#', class:"img-thumbnail hidden", id:"img_prev", size:"280x280"
-    %br
-    %br
-    = f.submit "Save article", class: "btn btn-success"
-    = f.hidden_field :img_cache
-%br
-%a.btn.btn-primary{:href => "#{admin_user_articles_path}"}
-    %i.fa.fa-backward.fa-lg= ' Back'
+=render 'shared/errors', model_obj: @article
+=render 'shared/form_article', url: admin_user_articles_path
+= link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), admin_user_articles_path, class: 'btn btn-primary'
 %br
 %br

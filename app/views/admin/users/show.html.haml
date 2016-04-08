@@ -2,12 +2,12 @@
   .panel-heading
     %h3.panel-title About User
   .panel-body
-    %h4= "User Name: #{@user[:username]}"
+    %h4= "User Name: #{@user.username}"
     %br
-    %h4= "Email: #{@user[:email]}"
+    %h4= "Email: #{@user.email}"
     %br
-    %h4= "Password: #{@user[:password]}"
-%a.btn.btn-primary{:href => "#{admin_users_path}"}
-  %i.fa.fa-backward= ' Back'
-%a.btn.btn-warning{:href => "#{edit_admin_user_path(@user)}"}
-  %i.fa.fa-pencil-square-o= ' Edit'  	
+    %h4= "Password: #{@user.password}" 	
+= link_to content_tag(:i,' Back', class: 'fa fa-backward'), 
+  admin_users_path, class: 'btn btn-primary'
+= link_to content_tag(:i,' Edit', class: 'fa fa-pencil-square-o'), 
+  edit_admin_user_path(@user), class: 'btn btn-warning'
