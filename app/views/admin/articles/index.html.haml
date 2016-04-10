@@ -21,6 +21,6 @@
               method: :delete,
               data: { confirm: 'Are you sure delete this article?' },
               class: "btn btn-danger"
-= paginate @articles, theme:'twitter-bootstrap-3'
+=render 'shared/paginator', model_obj: @articles
 %br
 = link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), admin_users_path, class: 'btn btn-primary'

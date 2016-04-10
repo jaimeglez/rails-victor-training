@@ -1,13 +1,13 @@
 = bootstrap_form_for [@user, @article], url: url do |f|
-    = f.text_field :title
-    = f.text_area :text
-    = f.file_field :img, id: "img-upload"
-    - if @user.persisted?
-      = image_tag @article.img.url(:thumb), class:"img-thumbnail", id:"img_prev", size:"280x280"
-    - else
-      = image_tag '#', class:"img-thumbnail hidden", id:"img_prev", size:"280x280"
-    %br
-    %br
-    = f.submit "Save article", class: "btn btn-success"
-    = f.hidden_field :img_cache
+  = f.text_field :title
+  = f.text_area :text
+  = f.file_field :img, id: "img-upload"
+  - if @article.persisted?
+    = image_tag @article.img.url(:thumb), class:"img-thumbnail", id:"img_prev", size:"280x280"
+  - else
+  = image_tag '#', class:"img-thumbnail hidden", id:"img_prev", size:"280x280"
+  %br
+  %br
+  = f.submit "Save article", class: "btn btn-success"
+  = f.hidden_field :img_cache
 %br
