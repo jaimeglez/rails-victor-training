@@ -7,7 +7,7 @@
     %tr
       %th User name
       %th Email
-      %th{:colspan => "4"}
+      %th{colspan:"4"}
   %tbody
     - @users.each do |user|
       %tr
@@ -25,3 +25,5 @@
               method: :delete,
               data: { confirm: 'Are you sure delete this user?' },
               class: "btn btn-danger"
+=render 'shared/paginator', model_obj: @users
+%br

@@ -14,4 +14,6 @@
         %td= article.text
         %td= article.user.username
         %td= link_to content_tag(:i,' Show', class: 'fa fa-eye'), article_path(article), class: 'btn btn-info'
+=render 'shared/paginator', model_obj: @articles
+%br
 = link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), root_path, class: 'btn btn-primary'
