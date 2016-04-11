@@ -2,7 +2,7 @@ class Admin::ArticlesController < Admin::AdminController
   before_filter :find_user, except: [:new]
 
   def index
-    @articles = Article.where(user_id: @user.id)
+    @articles = Article.where(user_id: @user.id).page(params[:page])
   end
 
   def new
@@ -44,7 +44,7 @@ class Admin::ArticlesController < Admin::AdminController
 
   private
     def article_params
-      params.require(:article).permit(:title, :text)
+      params.require(:article).permit(:title, :text, :img)
     end
 
     def find_user

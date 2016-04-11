@@ -1,11 +1,4 @@
 %h2.text-center New User
-=render partial: 'shared/errors', locals: {model_obj: @user}
-= bootstrap_form_for :user, url: admin_users_path do |f|
-    = f.text_field :username
-    = f.email_field :email
-    = f.email_field :email_confirmation
-    = f.password_field :password
-    = f.submit "Save user", class: "btn btn-success"
-%br
-%a.btn.btn-primary{:href => "#{admin_users_path}"}
-    %i.fa.fa-backward.fa-lg= ' Back'
+=render 'shared/errors', model_obj: @user
+=render 'shared/form_user', url: admin_users_path
+= link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), admin_users_path, class: 'btn btn-primary'

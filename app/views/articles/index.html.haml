@@ -1,0 +1,19 @@
+%h1 Listing all articles
+%br
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Text
+      %th Author
+      %th{colspan:"2"}
+  %tbody
+    - @articles.each do |article|
+      %tr
+        %td= article.title
+        %td= article.text
+        %td= article.user.username
+        %td= link_to content_tag(:i,' Show', class: 'fa fa-eye'), article_path(article), class: 'btn btn-info'
+=render 'shared/paginator', model_obj: @articles
+%br
+= link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), root_path, class: 'btn btn-primary'

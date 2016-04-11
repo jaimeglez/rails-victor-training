@@ -1,11 +1,13 @@
 .panel.panel-primary
   .panel-heading
-    %h3.panel-title= "Article By: #{@user[:username]}"
+    %h3.panel-title= "Article By: #{@user.username}"
   .panel-body
-    %h4= "Title: #{@article[:title]}"
+    %h4= "Title: #{@article.title}"
     %br
-    %h4= "Description: #{@article[:text]}"
-%a.btn.btn-primary{:href => "#{admin_user_articles_path(@user)}"}
-  %i.fa.fa-backward= ' Back'
-%a.btn.btn-warning{:href => "#{edit_admin_user_article_path(@user, @article)}"}
-  %i.fa.fa-pencil-square-o= ' Edit' 
+    %h4= "Description: #{@article.text}"
+    %br
+    = image_tag @article.img.url
+= link_to content_tag(:i,' Back', class: 'fa fa-backward'), 
+  admin_user_articles_path(@user), class: 'btn btn-primary'
+= link_to content_tag(:i,' Edit', class: 'fa fa-pencil-square-o'), 
+  edit_admin_user_article_path(@user, @article), class: 'btn btn-warning'

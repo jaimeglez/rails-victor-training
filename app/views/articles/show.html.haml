@@ -1,0 +1,10 @@
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title= "Article By: #{@article.user.username}"
+  .panel-body
+    %h4= "Title: #{@article.title}"
+    %br
+    %h4= "Description: #{@article.text}"
+    %br
+    = image_tag @article.img.url
+= link_to content_tag(:i,'Back', class: 'fa fa-backward'), articles_path, class: 'btn btn-primary'

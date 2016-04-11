@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
   end
   get 'admin' => 'admin/users#index'
+
+  resources :articles, only: [:index, :show]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
