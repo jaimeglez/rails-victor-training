@@ -23,7 +23,17 @@ Capybara.default_wait_time = 10
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
-
+  config.use_transactional_fixtures = false
+  config.include Warden::Test::Helpers
+  config.before :suite do
+    Warden.test_mode!
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+  config.after :each do
+    Warden.test_reset!
+    DatabaseCleaner.clean
+  end
   config.include FactoryGirl::Syntax::Methods
   # ## Mock Framework
   #
@@ -39,7 +49,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  # config.use_transactional_fixtures = true
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
