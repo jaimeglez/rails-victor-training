@@ -1,8 +1,8 @@
 class Admin::ArticlesController < Admin::AdminController
-  before_filter :find_user, except: [:new]
+  before_filter :find_admin, except: [:new]
 
   def index
-    @articles = Article.where(user_id: @user.id).page(params[:page])
+    @articles = Article.where(admin_id: @admin.id).page(params[:page])
   end
 
   def new
@@ -10,10 +10,10 @@ class Admin::ArticlesController < Admin::AdminController
   end
 
   def create
-    @article = @user.articles.create(article_params)
+    @article = @admin.articles.create(article_params)
 
     if @article.save
-      redirect_to admin_user_articles_path(@user)
+      redirect_to admin_admin_articles_path(@admin)
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class Admin::ArticlesController < Admin::AdminController
   def update
     @article= Article.find(params[:id])
     if @article.update(article_params)
-      redirect_to admin_user_articles_path(@user)
+      redirect_to admin_admin_articles_path(@admin)
     else
       render 'edit'
     end
@@ -39,7 +39,7 @@ class Admin::ArticlesController < Admin::AdminController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to admin_user_articles_path(@user)
+    redirect_to admin_admin_articles_path(@admin)
   end
 
   private
@@ -47,7 +47,7 @@ class Admin::ArticlesController < Admin::AdminController
       params.require(:article).permit(:title, :text, :img)
     end
 
-    def find_user
-      @user= User.find(params[:user_id])
+    def find_admin
+      @admin= Admin.find(params[:admin_id])
     end
 end

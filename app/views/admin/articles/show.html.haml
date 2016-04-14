@@ -1,6 +1,6 @@
 .panel.panel-primary
   .panel-heading
-    %h3.panel-title= "Article By: #{@user.username}"
+    %h3.panel-title= "Article By: #{@admin.username}"
   .panel-body
     %h4= "Title: #{@article.title}"
     %br
@@ -8,6 +8,6 @@
     %br
     = image_tag @article.img.url
 = link_to content_tag(:i,' Back', class: 'fa fa-backward'), 
-  admin_user_articles_path(@user), class: 'btn btn-primary'
+  admin_admin_articles_path(@admin), class: 'btn btn-primary'
 = link_to content_tag(:i,' Edit', class: 'fa fa-pencil-square-o'), 
-  edit_admin_user_article_path(@user, @article), class: 'btn btn-warning'
+  edit_admin_admin_article_path(@admin, @article), class: 'btn btn-warning'
