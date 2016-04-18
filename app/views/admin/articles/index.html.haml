@@ -23,4 +23,5 @@
               class: "btn btn-danger"
 =render 'shared/paginator', model_obj: @articles
 %br
-= link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), admin_admins_path, class: 'btn btn-primary'
+- if can? :manege, @admin
+  = link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), admin_admins_path, class: 'btn btn-primary'

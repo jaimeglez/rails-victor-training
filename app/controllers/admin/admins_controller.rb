@@ -1,4 +1,15 @@
 class Admin::AdminsController < Admin::AdminController
+  load_and_authorize_resource except: :create
+
+  rescue_from CanCan::AccessDenied do |exception|
+    @admin= Admin.find(current_admin)
+    redirect_to admin_admin_articles_path(@admin)
+  end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_admin)
+  end
+
   def index
     @admins = Admin.page(params[:page])
   end
@@ -41,6 +52,6 @@ class Admin::AdminsController < Admin::AdminController
 
   private
     def admin_params
-      params.require(:admin).permit(:username, :email, :email_confirmation, :password)
+      params.require(:admin).permit(:username, :email, :email_confirmation, :password, :role)
     end
 end
