@@ -53,7 +53,7 @@ class Admin::ArticlesController < Admin::AdminController
 
     def find_admin
       if @admin.nil?
-        @admin= Admin.find(current_admin)
+        @admin= Admin.find(current_admin.id)
         #binding.pry
       else
         @admin= Admin.find(params[:admin_id])

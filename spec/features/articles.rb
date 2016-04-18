@@ -3,7 +3,7 @@ require 'pry'
 
 feature "the signin process" do
   before :all do
-    @admin = FactoryGirl.create(:admin)
+    @admin = FactoryGirl.create(:admin_user)
     FactoryGirl.create(:article)
    end
   before :each do
@@ -14,7 +14,7 @@ feature "the signin process" do
   end
 
   scenario 'fill article information and save it succesfully', js: true do
-    visit admin_users_path
+    visit admin_admins_path
     all('i.fa.fa-plus')[1].click
     expect(page).to have_content 'New articles'
     fill_in 'article[title]', with: 'test 3'
@@ -26,7 +26,8 @@ feature "the signin process" do
   end
 
   scenario 'Edit article information and save it succesfully', js: true do
-    visit admin_users_path
+    FactoryGirl.create(:article)
+    visit admin_admins_path
     all('i.fa.fa-eye')[1].click #Click on Show articles
     find('.btn-warning', match: :first).click
     expect(page).to have_content 'Editing article'
@@ -34,13 +35,12 @@ feature "the signin process" do
     fill_in 'article[text]', with: 'Description test edit'
     attach_file 'article[img]', File.join(Rails.root, 'spec/features', 'images', 'article.jpg')
     click_button 'Save article'
-
     expect(page).to have_content 'test edit'
     expect(page).to have_content 'Description test edit'
   end
 
   scenario 'Delete article', js: true do
-    visit admin_users_path
+    visit admin_admins_path
     all('i.fa.fa-eye')[1].click #Select the first button Destroy article
     list = find('tbody').all('tr')
     accept_alert do

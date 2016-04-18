@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
   	if !current_admin.nil?
-  		@admin= Admin.find(current_admin)
+  		@admin= Admin.find(current_admin.id)
   	end
   end
 
