@@ -6,7 +6,7 @@ class Admin::ArticlesController < Admin::AdminController
   end
 
   def index
-    @articles = Article.where(admin_id: @admin.id).page(params[:page])
+    @articles = Article.list(@admin)
   end
 
   def new
@@ -54,7 +54,6 @@ class Admin::ArticlesController < Admin::AdminController
     def find_admin
       if @admin.nil?
         @admin= Admin.find(current_admin.id)
-        #binding.pry
       else
         @admin= Admin.find(params[:admin_id])
       end
