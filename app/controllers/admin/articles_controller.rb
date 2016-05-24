@@ -1,12 +1,8 @@
 class Admin::ArticlesController < Admin::AdminController
   before_filter :find_admin
 
-  def current_ability
-    @current_ability ||= Ability.new(current_admin)
-  end
-
   def index
-    @articles = Article.list(@admin)
+    @articles = @admin.articles.page(params[:page])
   end
 
   def new
@@ -52,10 +48,6 @@ class Admin::ArticlesController < Admin::AdminController
     end
 
     def find_admin
-      if @admin.nil?
-        @admin= Admin.find(current_admin.id)
-      else
-        @admin= Admin.find(params[:admin_id])
-      end
+      @admin= Admin.find(params[:admin_id])
     end
 end

@@ -6,10 +6,6 @@ class Admin::AdminsController < Admin::AdminController
     redirect_to admin_admin_articles_path(@admin)
   end
 
-  def current_ability
-    @current_ability ||= Ability.new(current_admin)
-  end
-
   def index
     @admins = Admin.page(params[:page])
   end
@@ -46,8 +42,13 @@ class Admin::AdminsController < Admin::AdminController
 
   def destroy
     @admin = Admin.find(params[:id])
-    @admin.destroy
-    redirect_to admin_admins_path(@admin)
+      if @admin.destroy
+        redirect_to admin_admins_path(@admin)
+        flash[:success] = "Usuario eliminado correctamente!"
+      else
+        redirect_to admin_admins_path(@admin)
+        flash[:danger] = "El usurario no se pudo eleiminar correctamente, intente mas tarde."
+      end
   end
 
   private
