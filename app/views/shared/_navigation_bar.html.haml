@@ -1,16 +1,24 @@
 %nav.navbar.navbar-inverse{role:"navigation"}
   .container-fluid
     .navbar-header
-      = link_to 'Trainig Ruby on Rails', root_path, class: 'navbar-brand'
-      %button.navbar-toggle{"data-target" => ".navbar-menubuilder", "data-toggle" => "collapse", type:"button"}
+      - if admin_signed_in?
+        = link_to "Login As #{current_admin.username}", root_path, class: 'navbar-brand'
+        %button.navbar-toggle{"data-target" => ".navbar-menubuilder", "data-toggle" => "collapse", type:"button"}
+      - else
+        = link_to 'Trainig Ruby on Rails', root_path, class: 'navbar-brand'
+        %button.navbar-toggle{"data-target" => ".navbar-menubuilder", "data-toggle" => "collapse", type:"button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
     .collapse.navbar-collapse.navbar-menubuilder
       - if admin_signed_in?
-        %ul.nav.navbar-nav.navbar-left
-          %li= link_to 'Users', admin_users_path
+        - if can? :manege, @admin
+          %ul.nav.navbar-nav.navbar-left
+            %li= link_to 'Users', admin_admins_path
+        - else
+          %ul.nav.navbar-nav.navbar-left
+            %li= link_to 'Articles', admin_admin_articles_path(@admin)
         %ul.nav.navbar-nav.navbar-right
           %li= link_to 'Sign out', destroy_admin_session_path, method: :delete
       - else

@@ -1,0 +1,32 @@
+- if can? :manege, @admin
+  %h1 Listing user
+  %br 
+  = link_to content_tag(:i,' Create User', class: 'fa fa-plus fa-lg'), 
+     new_admin_admin_path, class: 'btn btn-success'
+  %table.table.table-striped
+    %thead
+      %tr
+        %th User name
+        %th Email
+        %th{colspan:"4"}
+    %tbody
+      - @admins.each do |admin|
+        %tr
+          %td= admin.username
+          %td= admin.email
+          %td= link_to content_tag(:i,' Show', class: 'fa fa-eye'), 
+                admin_admin_path(admin), class: 'btn btn-info'
+          %td= link_to content_tag(:i,' Edit', class: 'fa fa-pencil-square-o'), 
+                edit_admin_admin_path(admin), class: 'btn btn-warning'
+          - if admin.id == current_admin.id
+            %td= link_to content_tag(:i,' Create article', class: 'fa fa-plus'), 
+                  new_admin_admin_article_path(admin), class: 'btn btn-success'
+          %td= link_to content_tag(:i,' Show articles', class: 'fa fa-eye'), 
+              admin_admin_articles_path(admin), class: 'btn btn-info'
+          - if admin.id != current_admin.id
+            %td= link_to 'Destroy User', admin_admin_path(admin),
+                method: :delete,
+                  data: { confirm: 'Are you sure delete this user?' },
+                class: "btn btn-danger"
+  =render 'shared/paginator', model_obj: @admins
+  %br

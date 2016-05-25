@@ -1,7 +1,11 @@
-= bootstrap_form_for @user, url: url do |f|
-  = f.text_field :username
-  = f.email_field :email
-  = f.email_field :email_confirmation
-  = f.password_field :password
-  = f.submit "Save user", class: "btn btn-success"
+= bootstrap_form_for @admin, url: url do |f|
+	- if @admin.persisted?
+		= f.select :role, options_for_select([['User', 'user'], ['Admin', 'admin']], @admin.role)
+	- else
+		= f.select :role, options_for_select([['User', 'user'], ['Admin', 'admin']], 'user')
+	= f.text_field :username
+	= f.email_field :email
+	= f.email_field :email_confirmation
+	= f.password_field :password
+	= f.submit "Save user", class: "btn btn-success"
 %br

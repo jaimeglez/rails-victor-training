@@ -1,7 +1,7 @@
-%h1 Listing articles By #{@user.username}
+%h1 Listing articles By #{@admin.username}
 %br
 = link_to content_tag(:i,' New Article', class: 'fa fa-plus fa-lg'), 
-   new_admin_user_article_path(@user), class: 'btn btn-success'
+   new_admin_admin_article_path(@admin), class: 'btn btn-success'
 %table.table.table-striped
   %thead
     %tr
@@ -14,13 +14,14 @@
         %td= article.title
         %td= article.text
         %td= link_to content_tag(:i,' Show', class: 'fa fa-eye'), 
-              admin_user_article_path(@user, article), class: 'btn btn-info'
+              admin_admin_article_path(@admin, article), class: 'btn btn-info'
         %td= link_to content_tag(:i,' Edit', class: 'fa fa-pencil-square-o'), 
-              edit_admin_user_article_path(@user, article), class: 'btn btn-warning'
-        %td= link_to 'Destroy Article', admin_user_article_path(@user, article),
+              edit_admin_admin_article_path(@admin, article), class: 'btn btn-warning'
+        %td= link_to 'Destroy Article', admin_admin_article_path(@admin, article),
               method: :delete,
               data: { confirm: 'Are you sure delete this article?' },
               class: "btn btn-danger"
 =render 'shared/paginator', model_obj: @articles
 %br
-= link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), admin_users_path, class: 'btn btn-primary'
+- if can? :manege, @admin
+  = link_to content_tag(:i,' Back', class: 'fa fa-backward fa-lg'), admin_admins_path, class: 'btn btn-primary'

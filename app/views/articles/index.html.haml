@@ -12,7 +12,7 @@
       %tr
         %td= article.title
         %td= article.text
-        %td= article.user.username
+        %td= article.admin.username
         %td= link_to content_tag(:i,' Show', class: 'fa fa-eye'), article_path(article), class: 'btn btn-info'
 =render 'shared/paginator', model_obj: @articles
 %br

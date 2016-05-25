@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :admin
   mount_uploader :img, ImgUploader
   validates :title, presence: true, length: { minimum: 5 }
-  validates :user_id, presence: true
+  validates :admin_id, presence: true
 end
